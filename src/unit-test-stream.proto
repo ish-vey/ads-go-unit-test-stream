@@ -1,1 +1,21 @@
 syntax = "proto3";
+
+option go_package = "./unit_test_stream";
+package unit_test_stream;
+
+
+service UnitTestStream {
+    // Sends bytes to server
+    rpc TestStream(stream VideoStreamRequest) returns (VideoStreamReply){}
+}
+
+
+message VideoStreamRequest {
+    string FileName = 1;
+    bytes Data = 2;
+    bool Complete = 3;
+}
+
+message VideoStreamReply {
+    bool Success = 1;
+}
